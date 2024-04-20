@@ -3,26 +3,28 @@ import './App.css';
 import { Box, Container } from '@mui/material';
 import NuevoGasto from './Gastos/NuevoGasto';
 import ListaGasto from './Gastos/ListaGasto';
+import Grafica from './Graficos/Grafica';
 
 function App() {
   return(
 
     <div className="App">
-      {/* <header className="App-header">
+      <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" sizes='small' />
 
         <Container fixed>
-        </Container>
-      </header> */}
-
-        <Box display="flex">  
-          <Box flexGrow={1}>  
           <NuevoGasto/>
+          <Grafica/>
+        </Container>
+      </header>
+
+        {/* <Box display="flex">  
+          <Box flexGrow={1}>  
         </Box>
         <Box flex={0.5}>  
           <ListaGasto/>
         </Box>
-        </Box>
+        </Box> */}
         
     </div>
   );
