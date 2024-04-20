@@ -1,69 +1,59 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Chart, registerables } from 'chart.js';
+import React, {useEffect, useState, useRef} from 'react';
+import Chart from 'chart.js/auto';
+
+ 
 
 const Grafica = () => {
     const [gastos, setGastos] = useState([]);
     const chartRef = useRef(null);
-
-    // Registro de componentes de Chart.js necesarios para su uso
-    useEffect(() => {
-        Chart.register(...registerables);
-    }, []);
-
-    // Obtener los datos del localStorage
-    useEffect(() => {
+ 
+    useEffect(() =>{
+        //obteniendo los datos del local storage
         const storedGastos = localStorage.getItem('listaGastos');
-        if (storedGastos) {
+        if(storedGastos){
             setGastos(JSON.parse(storedGastos));
         }
     }, []);
-
-    // Crear gráfico cuando los datos cambien
-    useEffect(() => {
-        if (chartRef.current !== null) {
+ 
+    useEffect(() =>{
+        //destruir el grafico anterior si existiera
+        if (chartRef.current!== null){
             chartRef.current.destroy();
         }
-
+ 
+        //crear grafico cuando datos cambien
         const ctx = document.getElementById('graficoGastos');
-        if (ctx) {
+        if (ctx){
             const labels = gastos.map(gasto => gasto.titulo);
-            const data = gastos.map(gasto => parseFloat(gasto.valor)); // Asegurarse que los valores sean numéricos
-
-            chartRef.current = new Chart(ctx, {
+            const data = gastos.map(gasto => gasto.valor);
+ 
+            chartRef.current= new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: labels,
+                    labels:labels,
                     datasets: [{
-                        label: "Monto de gastos",
+                        label:"Monto de gastos",
                         data: data,
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
+                        backgroundColor: 'rgba(54,162,235,0.2)',
+                        borderColor: 'rbga(54,162,235,1)',
+                        borderWidth:1
                     }]
                 },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
+                options:{
+                    scales:{
+                        y:{
+                            beginAtZero:true
                         }
-                    },
-                    plugins: {
-                        subtitle: {
-                            display: true,
-                            text: 'Monto total de gastos por título'
-                        }
-                    },
-                    responsive: true
+                    }
                 }
             });
         }
-    }, [gastos]); // Dependencia para actualizar el gráfico
-
-    return (
-        <div>
-            <canvas id="graficoGastos"></canvas>
-        </div>
-    );
-}
-
-export default Grafica;
+    }, [gastos]);
+return(
+    <div>
+        <h2>Grafico de gastos</h2>
+        <canvas id="graficoGastos" width="400" height="400"></canvas>
+    </div>
+);
+};
+export default Grafica
