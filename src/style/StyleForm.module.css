@@ -1,0 +1,38 @@
+body{
+    background-color: rgb(200, 100, 100);
+}
+label{
+  color: #ccc;
+}
+/* LoginForm.module.css */
+.LoginForm {
+  /* Estilos para tu formulario */
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  max-width: 40%;
+  text-align: center;
+}
+
+.inputField {
+  margin: 10px;
+  align-content: center;
+}
+
+/* Asumiendo que InputField acepta una clase para su contenedor */
+.inputFieldContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 80px;
+}
+
+.input {
+  /* Estilos para tus inputs */
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: auto;
+  width: 90%;
+  display: block;
+  margin-bottom: 5px;
+}

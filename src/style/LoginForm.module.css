@@ -1,0 +1,22 @@
+.loginForm{
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  label{
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+  }
+  
+  button{
+    background-color: cadetblue;
+    color: aliceblue;
+    padding: 10px;
+    cursor: pointer;
+  }
